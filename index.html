@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="javascript.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.7.52/Tone.js"></script>
+    <style>
+        @font-face {
+	font-family: 'ShadowHand';
+	src: url('//2ttf.com/webfont/UIswCwhB/webfont.ttf') format('truetype');
+}
+    body{
+        font-family: "ShadowHand", sans-serif;
+    
+    overflow: auto;
+    background: linear-gradient(315deg, rgb(21, 194, 36) 3%, rgba(60,132,206,1) 38%, rgb(238, 234, 24) 68%, rgba(255,25,25,1) 98%);
+    animation: gradient 15s ease infinite;
+    background-size: 400% 400%;
+    background-attachment: fixed;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+
+.wave {
+    background: rgb(255 255 255 / 25%);
+    border-radius: 1000% 1000% 0 0;
+    position: fixed;
+    width: 200%;
+    height: 12em;
+    animation: wave 10s -3s linear infinite;
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.wave:nth-of-type(2) {
+    bottom: -1.25em;
+    animation: wave 18s linear reverse infinite;
+    opacity: 0.8;
+}
+
+.wave:nth-of-type(3) {
+    bottom: -2.5em;
+    animation: wave 20s -1s reverse infinite;
+    opacity: 0.9;
+}
+
+@keyframes wave {
+    2% {
+        transform: translateX(1);
+    }
+
+    25% {
+        transform: translateX(-25%);
+    }
+
+    50% {
+        transform: translateX(-50%);
+    }
+
+    75% {
+        transform: translateX(-25%);
+    }
+
+    100% {
+        transform: translateX(1);
+    }
+}
+    </style>
+    
+</head>
+<body class="">
+    <audio hidden class="fart"src="/fart-83471.mp3"></audio>
+    <div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+     </div>
+        <header class="flex justify-center heading ">
+        <h1 class="md:text-[110px] text-[70px] heading mt-8">Simon Game</h1>
+    </header>
+    <div class="mx-8 lastscore absolute text-[70px]"></div>
+    <div class="flex justify-end ">
+    <div class="float-right highscore  mx-8 text-[70px]"></div></div>
+    
+    
+    <section class="flex justify-center  mt-5">
+     
+    <section class="grid grid-rows-2 grid-flow-col  gap-1 w-100 h-100 tile-container">
+       
+        <div class="md:w-60 md:h-60 w-27 h-27 border-solid drop-shadow-xl border-2 bg-red-500 rounded-tl-xl tile" data-tile='red' data-sound='audio1'></div>
+        <div class="w-60 h-60  border-solid drop-shadow-xl  border-2 bg-blue-500 rounded-bl-xl tile" data-tile='blue' data-sound='audio2' ></div>   
+  
+        <div class="w-60 h-60  border-solid drop-shadow-xl  border-2 bg-yellow-500 rounded-tr-xl tile"  data-tile='yellow'  data-sound='audio3'></div>
+        <div class="w-60 h-60 border-solid drop-shadow-xl  border-2 bg-green-500 rounded-br-xl tile" data-tile='green' data-sound='audio4'></div>
+    </section>
+ 
+</section>
+
+    <footer class="flex justify-center content-center mt-10 ">
+        
+        <button class=" text-6xl mt-4 startButton">START!</button>
+        <div  class="info text-6xl " ></div>
+    </footer>
+ 
+</body>
+</html>
